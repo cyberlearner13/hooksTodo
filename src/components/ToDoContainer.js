@@ -1,13 +1,13 @@
 import React from 'react';
 import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
+import Container from 'react-bootstrap/Container';
 
 const TodoAppContainer = () => {
     return (
-    <div>
-        <TodoForm />
-        <TodoList />
-    </div>);
+        <Container className="mt-4">
+            <TodoForm />
+        </Container>
+    );
 }
 
 export default TodoAppContainer;

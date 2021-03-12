@@ -1,11 +1,11 @@
 import React, {useState, useReducer, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import reducer from '../reducer/todoReducer';
 import { actionTypes } from '../reducer/actionTypes';
+import TodoList from "./TodoList";
 
 const { Group, Control  } = Form;
 const initialState = {todos: []};
@@ -17,9 +17,9 @@ const TodoForm = () => {
         setTodo('');
     }
 
-    console.log(state)
+    
     return (
-        <Container className="mt-4">
+        <>
            <Form>
                 <Group controlId="formBasicAddTodo">
                     <Row>
@@ -28,7 +28,8 @@ const TodoForm = () => {
                     </Row>
                 </Group>
             </Form>
-        </Container>
+            <TodoList todoData = {[state, dispatch]} />
+        </>
     )
 }
 
