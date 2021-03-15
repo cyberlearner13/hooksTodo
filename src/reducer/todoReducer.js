@@ -15,7 +15,16 @@ const reducer = (state, action) => {
             changedTodo.complete = !complete;
             return {...state, todos: [...rest, changedTodo] };
         } 
+        case actionTypes.EDIT_TODO: {
+            const { todos } = state;
+            const newTodo = todos.filter(todo => todo.todo_id === action.payload.id)[0];
+            const rest = todos.filter(todo => todo.todo_id !== action.payload.id);
+            const changedTodo = {...newTodo};
+            changedTodo.name = action.payload.edited;
+            return {...state, todos: [...rest, changedTodo] };
+        }
         case actionTypes.DELETE_TODO: return {...state, todos: [...state.todos.filter(todo => todo.todo_id !== action.payload)] };
+        case actionTypes.CLEAR_TODOS: return {todos: []}
 
         default: return state;
     }
